@@ -204,7 +204,8 @@ def process_image(image_path):
 
 def analyze_uhi_with_gemini(image_path: Path) -> Dict[Any, Any]:
     """
-    Analyze UHI prediction image with Gemini API and get recommendations
+    Analyze this Urban Heat Island (UHI) prediction segmented image and extract valuable insights for climate adaptation and urban planning.
+
     """
     try:
         # Load the Gemini Pro Vision model
@@ -223,21 +224,39 @@ def analyze_uhi_with_gemini(image_path: Path) -> Dict[Any, Any]:
         Return only a JSON object without any markdown formatting or additional text.
         Format:
         {
-            "analysis": {
-                "high_heat_areas": [],
-                "risk_level": "high/medium/low"
+        "analysis": {
+            "high_heat_areas": ["List areas or zones likely to retain the most heat based on image segmentation colors (e.g., roads, rooftops)"],
+            "surface_distribution": {
+                "buildings_percent": 0,
+                "roads_percent": 0,
+                "vegetation_percent": 0,
+                "water_bodies_percent": 0
             },
-            "recommendations": {
-                "immediate_actions": [],
-                "long_term_actions": [],
-                "estimated_temperature_reduction": "",
-                "implementation_timeline": {}
-            },
-            "sustainability_impact": {
-                "environmental_benefits": [],
-                "economic_benefits": []
+            "risk_level": "high/medium/low"
+        },
+        "recommendations": {
+            "immediate_actions": [
+                "Action items such as tree planting, rooftop painting, reducing asphalt coverage"
+            ],
+            "long_term_actions": [
+                "Urban redesign, green roofing, permeable pavements, zoning laws"
+            ],
+            "estimated_temperature_reduction": "Expected temperature drop in degrees Celsius",
+            "implementation_timeline": {
+                "immediate": "0-6 months",
+                "short_term": "6-12 months",
+                "long_term": "1-3 years"
             }
-        }
+        },
+        "sustainability_impact": {
+            "environmental_benefits": [
+                "Reduced CO2, improved air quality, enhanced biodiversity"
+            ],
+            "economic_benefits": [
+                "Lower cooling costs, increased property value, health cost savings"
+           ]
+        }
+    }
         """
         
         # Generate response from Gemini
